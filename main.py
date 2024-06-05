@@ -56,8 +56,8 @@ class PDF:
         # Draw links
         link_y = header_y - (4 * header_spacing)
         self.c.setFont("Helvetica", 10)
-        self.c.drawString(50, link_y - header_spacing, f"Link do Dataset: {dataset_link}")
-        self.c.drawString(50, link_y - (2 * header_spacing), f"Link do Vídeo: {video_link}")
+        self.c.drawString(50, link_y - header_spacing, f"Link do dataset utilizado: {dataset_link}")
+        self.c.drawString(50, link_y - (2 * header_spacing), f"Link do meu video de apresentação: {video_link}")
 
     def write_string(self, content: str, x: int = 0, y: int = 0):
         if x == 0:
