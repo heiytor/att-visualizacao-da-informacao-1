@@ -34,6 +34,7 @@
 
         env = {
           LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
+          RGM = "34297219";
         };
 
         # Run this command, only after creating the virtual environment

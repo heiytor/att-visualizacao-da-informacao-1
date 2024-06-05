@@ -7,6 +7,7 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 import matplotlib.pyplot as plt
 import sys
+import os
 
 class Graph:
     @staticmethod
@@ -80,7 +81,7 @@ if __name__ == "__main__":
     pdf = PDF(
         pdf_name,
         name="Heitor Danilo Silva Barros",
-        rgm="000",
+        rgm=os.environ.get("RGM", "N/A"),
         institution="Universidade Cidade São Paulo - UNICID",
         course="Ciências da Computação",
         dataset_link="https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&export=download",
