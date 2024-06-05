@@ -37,19 +37,20 @@ class Graph:
 class PDF:
     spacing_x = 50
 
-    def __init__(self, pdf_path: str, name: str, rgm: str, institution: str, course: str, dataset_link: str, video_link: str):
+    def __init__(self, pdf_path: str, name: str, rgm: str, institution: str, course: str, dataset_link: str, video_link: str, repo_link: str):
         self.c = canvas.Canvas(pdf_path, pagesize=letter)
-        self.__create(name, rgm, institution, course, dataset_link, video_link)
+        self.__create(name, rgm, institution, course, dataset_link, video_link, repo_link)
 
-    def __create(self, name: str, rgm: str, institution: str, course: str, dataset_link: str, video_link: str):
+    def __create(self, name: str, rgm: str, institution: str, course: str, dataset_link: str, video_link: str, repo_link):
         # Draw header
         header_y = 750 
         header_spacing = 15 
         self.c.setFont("Helvetica-Bold", 12)
         self.c.drawString(50, header_y, f"Nome: {name}")
         self.c.drawString(50, header_y - header_spacing, f"RGM: {rgm}")
-        self.c.drawString(50, header_y - (2 * header_spacing), f"Instituição: {institution}")
-        self.c.drawString(50, header_y - (3 * header_spacing), f"Curso: {course}")
+        self.c.drawString(50, header_y - (2 * header_spacing), f"GitHub: {repo_link}")
+        self.c.drawString(50, header_y - (3 * header_spacing), f"Instituição: {institution}")
+        self.c.drawString(50, header_y - (4 * header_spacing), f"Curso: {course}")
 
         # Draw links
         link_y = header_y - (4 * header_spacing)
@@ -83,7 +84,8 @@ if __name__ == "__main__":
         institution="Universidade Cidade São Paulo - UNICID",
         course="Ciências da Computação",
         dataset_link="https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&export=download",
-        video_link="placeholder"
+        video_link="placeholder",
+        repo_link="https://github.com/heiytor/att-visualizacao-da-informacao-1",
     )
 
     df = pd.read_csv("dataset/customers.csv")
