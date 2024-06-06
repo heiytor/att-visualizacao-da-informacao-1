@@ -1,4 +1,3 @@
-import seaborn as sns
 import pandas as pd
 from typing import Tuple
 from io import BytesIO
@@ -85,7 +84,7 @@ if __name__ == "__main__":
         institution="Universidade Cidade São Paulo - UNICID",
         course="Ciências da Computação",
         dataset_link="https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&export=download",
-        video_link="placeholder",
+        video_link="https://youtu.be/n3PFF5MyBak",
         repo_link="https://github.com/heiytor/att-visualizacao-da-informacao-1",
     )
 
@@ -108,13 +107,13 @@ if __name__ == "__main__":
     pdf.write_buffer(buffer, 50, 430, 350, 200)
 
     ##
-    pdf.write_string("Distribuição dos clientes por empresa, mostrando as 5 maiores empresas e \"Outros\" para o resto.", y=410)
+    pdf.write_string("Distribuição dos clientes por empresa, mostrando as 10 maiores empresas e \"Outros\" para o resto.", y=410)
 
     company_distribution = df["Company"].value_counts()
-    top_5_companies = company_distribution.nlargest(10)
+    top_10_companies = company_distribution.nlargest(10)
     other_companies_sum = company_distribution.iloc[10:].sum()
     buffer = Graph.write_buffer(
-        pd.concat([top_5_companies, pd.Series({"Outros": other_companies_sum})]),
+        pd.concat([top_10_companies, pd.Series({"Outros": other_companies_sum})]),
         kind="pie",
         size=(10, 6),
         title="Distribuição dos Clientes por Empresa",
